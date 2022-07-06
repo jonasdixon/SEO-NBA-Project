@@ -5,7 +5,7 @@
 * **Setup**
   * Install Balldontlie API -> https://github.com/ynnadkrap/balldontlie
 * **How to Run**
-  * Open the Career-Home-Runs.py file
+  * Open the .py file
   * Input a valid NBA Player (First Name, Last Name) and season (any season from 1979-80 to current)
   * Observe output!!
 * **Description**
