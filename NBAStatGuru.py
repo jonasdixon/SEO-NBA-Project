@@ -44,6 +44,7 @@ def create_player_dict():
     return our_data
 
 # Next to do, use input from user to search through dict <our_data> to find player id, make a new request to the api for stats, proceed from there
+# Also, sort the dictionary by val
 
 
 def main():
