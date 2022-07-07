@@ -24,8 +24,8 @@ def create_url():
             "5": "season_averages"
             }
 # add a try except block here
-    while: specify not in cases.keys():
-        raise IndexError("That key was not valid to give any data from the API")
+    # while: specify not in cases.keys():
+    #     raise IndexError("That key was not valid to give any data from the API")
     return base_url + cases[specify]
 
 
@@ -50,9 +50,10 @@ if __name__=='__main__':
     # this is the dictionary of all the data
     formatted = get_response(r)
     # formatted = response.json()
-
+    formatted["meta"]["per_page"] = 3757
+    print(formatted)
     # This line is returning cryptic error code, look into it further
     # json.dumps(get_response(formatted), indent=4, sort_keys=True)
-
-    print(formatted)
+    # for i in range():
+    print(formatted["meta"]["per_page"])
     
