@@ -24,15 +24,17 @@ def create_player_dict():
     """
     Creating a dictionary of all the players in the API
     """
-    url = "https://www.balldontlie.io/api/v1/players"
-    big_dict = get_response(url) # this is only returning the players and ids from the "first page" of the json output
+    url = "https://www.balldontlie.io/api/v1/players?per_page=100"
+    big_dict = get_response(url)
     data_list = big_dict["data"]
+    meta_list = big_dict["meta"]
     our_data = {}
     for i in range(len(data_list)):
         player_id = data_list[i]["id"]
         player_first_name = data_list[i]["first_name"].lower()
         player_last_name = data_list[i]["last_name"].lower()
-        our_data[player_id] = player_first_name + " " + player_last_name
+        full_name = player_first_name + " " + player_last_name
+        our_data[full_name] = str(player_id)
     return our_data
 
 

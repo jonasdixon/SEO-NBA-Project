@@ -1,10 +1,7 @@
 import requests
 import json
 
-#url = 'https://www.balldontlie.io/api/v1/'
-
-#print("Input an option below to navigate the BallDontLie API: ")
-#specify = input("\n 1 - players \n 2 - teams \n 3 - games \n 4 - stats \n 5 - season_stats\n ")
+# url = 'https://www.balldontlie.io/api/v1/'
 
 def create_url():
     """
@@ -23,9 +20,7 @@ def create_url():
             "4": "stats",
             "5": "season_averages"
             }
-# add a try except block here
-    # while: specify not in cases.keys():
-    #     raise IndexError("That key was not valid to give any data from the API")
+    
     return base_url + cases[specify]
 
 
@@ -35,7 +30,7 @@ def get_response(url):
     """
     response = requests.get(url)
     print(response.status_code)
-    if response.status_code!=200:
+    if response.status_code != 200:
         raise Exception("Request returned an error: {} {}".format(
                 res.status_code, res.text
             )
@@ -49,11 +44,9 @@ if __name__=='__main__':
     r = create_url()
     # this is the dictionary of all the data
     formatted = get_response(r)
-    # formatted = response.json()
-    formatted["meta"]["per_page"] = 3757
+    # formatted["meta"]["per_page"] 
     print(formatted)
     # This line is returning cryptic error code, look into it further
     # json.dumps(get_response(formatted), indent=4, sort_keys=True)
     # for i in range():
     print(formatted["meta"]["per_page"])
-    
