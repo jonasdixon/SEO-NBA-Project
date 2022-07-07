@@ -29,10 +29,9 @@ def get_response(url):
     Making the request to the API and returning data as a parsed json file
     """
     response = requests.get(url)
-    print(response.status_code)
     if response.status_code != 200:
         raise Exception("Request returned an error: {} {}".format(
-                res.status_code, res.text
+                response.status_code, response.text
             )
         )
 
