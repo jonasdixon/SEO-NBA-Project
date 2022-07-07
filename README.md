@@ -6,6 +6,7 @@
 
 * **Setup**
   * Install Balldontlie API -> https://github.com/ynnadkrap/balldontlie
+  * pip install coverage (for testing)
 * **How to Run**
   * Open the .py file
   * Input a valid NBA Player (First Name, Last Name) and season (any season from 1979-80 to current)
