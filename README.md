@@ -2,6 +2,8 @@
 **Week 2 Project for SEO Tech Developer Program - Summer 2022**
 **Contributors: Jonas Dixon and Ian Yeaton**
 
+![example_workflow](https://github.com/jonasdixon/SEO-NBA-Project/actions/workflows/linter.yaml/badge.svg)
+
 * **Setup**
   * Install Balldontlie API -> https://github.com/ynnadkrap/balldontlie
 * **How to Run**
