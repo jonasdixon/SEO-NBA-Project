@@ -39,16 +39,9 @@ def get_year() -> str:
     print("For example, an input of '2015' implies the 2015/2016 season")
     year = input("Enter a year in 'XXXX' format: ")
     while len(year) != 4 or int(year) < 1979 or int(year) > 2021:
-        year = input("Please enter a valid year within the given parameters")
+        year = input("Please enter a valid year within the given parameters: ")
     return year
 
-
-# Needs to be completed
-def create_query(s) -> str:
-    """
-    Forms an appropriate query based on user specifications
-    """
-    pass
 
 def get_stats(player_id, year):
     base_url = 'https://www.balldontlie.io/api/v1/season_averages'
@@ -76,6 +69,7 @@ def run_program():
 
 def main():
     run_program()
+
 
 if __name__ == "__main__":
     main()
