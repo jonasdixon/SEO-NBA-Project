@@ -1,11 +1,12 @@
 import requests
 import json
-from tst import get_response
+from backend import get_response, create_url, create_player_dict
 
 
 base_url = 'https://www.balldontlie.io/api/v1/'
 
-def get_player():
+
+def get_player() -> str:
     '''
     Gets information on the player chosen by the user.
     '''
@@ -19,46 +20,48 @@ def get_player():
         last_name = input("Invalid input. Please try again: ") 
     return first_name.lower() + " " + last_name.lower()
 
-# getting names and ids into one dict
-def create_player_dict():
-    """
-    Creating a dictionary of all the players in the API
-    """
-    url = "https://www.balldontlie.io/api/v1/players?per_page=100"
 
-    our_data = {}
-    
-    for i in range(1, 39):
-        
-        colect_dict = get_response(url+"&page={}".format(i))
-        data_lists = colect_dict["data"]
-        
-        for j in range(len(data_lists)):
-        
-            player_id = data_lists[j]["id"]
-            player_first_name = data_lists[j]["first_name"].lower()
-            player_last_name = data_lists[j]["last_name"].lower()
-            full_name = player_first_name + " " + player_last_name
-            our_data[full_name] = str(player_id)
-    
-    return our_data
+def find_player_id(player_name: str, our_data: dict) -> str:
+    """
+    Returns the player id for the desired player
+    """
+    while player_name not in our_data.keys():
+        player_name = input("Sorry, player not found. Please enter a first and last name to try again: ").lower()
+    return our_data[player_name]
 
-# Next to do, use input from user to search through dict <our_data> to find player id, make a new request to the api for stats, proceed from there
-# Also, sort the dictionary by val
-def find_player_id(player_name, our_data):
-    for player, id in our_data.items():
-        if player_name == player:
-            return id
-    print("Sorry, player not found. Please try again.")
-    run_program()
+
+def get_year() -> str:
+    """
+    Gets the input from the user if they want to specify a certain season
+    """
+    print("NOTE: The API only contains data from 1979-present")
+    print("NOTE: The entered date implies the season from input year to the next")
+    print("For example, an input of '2015' implies the 2015/2016 season")
+    year = input("Enter a year in 'XXXX' format: ")
+    while len(year) != 4 or int(year) < 1979 or int(year) > 2021:
+        year = input("Please enter a valid year within the given parameters")
+    return year
+
+
+# Needs to be completed
+def create_query(s) -> str:
+    """
+    Forms an appropriate query based on user specifications
+    """
+    pass
+
 
 def run_program():
+    print("Loading and updating necessary information...")
+    our_data = create_player_dict()
+    print("Done!")
+    print()
     player_name = get_player()
-    find_player_id(player_name)
+    player_id = find_player_id(player_name, our_data)
+    print(player_id)
+
 
 def main():
-    # print(get_player())
-    # print(create_player_dict())
     run_program()
 
 if __name__ == "__main__":
