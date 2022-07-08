@@ -45,11 +45,21 @@ def create_player_dict():
 
 # Next to do, use input from user to search through dict <our_data> to find player id, make a new request to the api for stats, proceed from there
 # Also, sort the dictionary by val
+def find_player_id(player_name, our_data):
+    for player, id in our_data.items():
+        if player_name == player:
+            return id
+    print("Sorry, player not found. Please try again.")
+    run_program()
 
+def run_program():
+    player_name = get_player()
+    find_player_id(player_name)
 
 def main():
-    print(get_player())
-    print(create_player_dict())
+    # print(get_player())
+    # print(create_player_dict())
+    run_program()
 
 if __name__ == "__main__":
     main()
