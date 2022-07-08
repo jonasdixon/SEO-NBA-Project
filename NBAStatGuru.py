@@ -50,6 +50,18 @@ def create_query(s) -> str:
     """
     pass
 
+def get_stats(player_id, year):
+    base_url = 'https://www.balldontlie.io/api/v1/season_averages'
+    choice = f"?seasons[]={year}&player_ids[]={player_id}&postseason=false"
+    url = base_url + choice
+    info = get_response(url)
+    base = info['data']
+    for name, stats in info.items():
+        fgpct = '%.2f' % (stats[0]['fg_pct'] * 100)
+        threepct = '%.2f' % (stats[0]['fg3_pct'] * 100)
+        ftpct = '%.2f' % (stats[0]['ft_pct'] * 100)
+        print(f"{stats[0]['pts']} PPG / {stats[0]['ast']} APG / {stats[0]['reb']} RPG / {stats[0]['stl']} SPG / {stats[0]['blk']} BPG / {fgpct} FG% / {threepct} 3P% / {ftpct} FT%")
+
 
 def run_program():
     print("Loading and updating necessary information...")
@@ -58,7 +70,8 @@ def run_program():
     print()
     player_name = get_player()
     player_id = find_player_id(player_name, our_data)
-    print(player_id)
+    year = get_year()
+    get_stats(player_id, year)
 
 
 def main():
