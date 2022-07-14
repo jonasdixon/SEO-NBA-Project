@@ -3,6 +3,7 @@
 **Contributors: Jonas Dixon and Ian Yeaton**
 
 ![example_workflow](https://github.com/jonasdixon/SEO-NBA-Project/actions/workflows/linter.yaml/badge.svg)
+* Add other badge
 
 * **Setup**
   * Install Balldontlie API -> https://github.com/ynnadkrap/balldontlie
